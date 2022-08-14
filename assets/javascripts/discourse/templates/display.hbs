@@ -1,0 +1,47 @@
+<head>
+  <h1>{{ i18n 'notebook.title' }}</h1>
+</head>
+
+<body>
+  <header class="nb-header" role = "banner"> 
+      <h1 class="nb-logo">
+        <a>Notes</a>
+      </h1>
+
+      <div class="nav-wrap">
+        <nav class="nb-main-nav" role="navigation">
+          <ul class="nb-list-hover-slide">
+            <li><a href="notebook">Add Notes</a></li>
+            <li><a href="display">Display All</a></li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+</body>
+
+
+{{#if notes}}
+<div class="row">
+<ul class="nb-note-saved">
+  {{#each notes as |note|}}
+  <div>
+    <li class="nb-note-saved1">
+       <button type="button" class="button1" {{ action 'deleteNote' note }}>
+        {{ i18n 'notebook.delete_note_label' }}
+      </button>
+      <form {{ action 'UpdateNote' note note.content action 'refresh' on='submit'}}>
+          <label for={{note}}  class="form-edit1">
+          {{!-- <Input class="input-edit1" id={{note.id}} @placeholder={{note.content}} @value={{note.content}}/> --}}
+          {{ textarea class="form-edit2" name='notes' placeholder= note.content value= note.content}}
+
+          </label>
+        <button type="submit" class="button2">
+          {{ i18n 'notebook.edit_note_label' }}
+        </button>
+      </form>
+      <br><br><br>
+    </li></div>
+  {{/each}}
+</ul>
+</div>
+{{/if}}

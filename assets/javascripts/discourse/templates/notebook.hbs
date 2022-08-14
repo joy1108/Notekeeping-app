@@ -1,0 +1,31 @@
+<head>
+  <h1>{{ i18n 'notebook.title' }}</h1>
+</head>
+
+<body>
+  <header class="nb-header" role = "banner"> 
+      <h1 class="nb-logo">
+        <a>Notes</a>
+      </h1>
+
+      <div class="nav-wrap">
+        <nav class="nb-main-nav" role="navigation">
+          <ul class="nb-list-hover-slide">
+            <li><a href="notebook">Add Notes</a></li>
+            <li><a href="display">Display All</a></li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+</body>
+
+<form {{ action 'createNote' note on='submit'}} class="nb-note">
+  <label>
+    {{ i18n 'notebook.create_note.text_field_label'}}
+    {{ textarea class="nb-note-saved1" name='note' value=note}}
+  </label>
+
+  <button type='submit' class='button3'>
+    {{ i18n 'notebook.create_note.submit_label' }}
+  </button>
+</form>
